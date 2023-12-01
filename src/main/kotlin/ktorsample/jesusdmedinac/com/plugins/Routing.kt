@@ -6,18 +6,13 @@ import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import ktorsample.jesusdmedinac.com.data.model.Person
+import ktorsample.jesusdmedinac.com.presentation.articleRouting
 import kotlin.random.Random
 
 fun Application.configureRouting() {
     routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
-
-        get("/person") {
-            call.respond(Person(Random.nextInt().toString()))
-        }
-
         staticResources("/static", "files")
+
+        articleRouting()
     }
 }
